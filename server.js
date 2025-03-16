@@ -33,12 +33,15 @@ app.use(
   })
 );
 
-app.use('/users', usersController);
+// add a user object to all templates, for nav
+
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+})
 
 app.get('/', (req, res) => {
-  res.render('index.ejs', {
-    user: req.session.user,
-  });
+  res.render('index.ejs');
 });
 
 app.get('/vip-lounge', (req, res) => {
@@ -53,7 +56,9 @@ app.get('/vip-lounge', (req, res) => {
 app.use(passUserToView);
 app.use('/auth', authController);
 app.use(isSignedIn);
+app.use('/users', usersController);
 app.use('/users/:userId/foods', foodsController);
+
 
 
 app.listen(port, () => {
