@@ -44,7 +44,9 @@ router.delete('/:foodId', async (req, res) => {
         const currentUser = await User.findById(req.session.user._id);
         currentUser.foods.id(req.params.foodId).deleteOne();
         await currentUser.save();
-        res.redirect(`/users/${currentUser._id/foods}`);
+        console.log('User ID:', currentUser._id);
+        console.log('Food ID:', req.params.foodId);
+        res.redirect(`/users/${currentUser._id}/foods`);
     } catch (error) {
         console.log(error);
         res.redirect('/');
