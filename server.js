@@ -24,9 +24,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-app.use('/users', usersController);
-
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -34,6 +32,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use('/users', usersController);
 
 app.get('/', (req, res) => {
   res.render('index.ejs', {
