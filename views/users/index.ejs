@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
     <title>Explore Our Community</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %> 
+    <div class="container">
     <h1>Explore Our Community</h1>
     <ul>
       <% users.forEach(user => { %>
@@ -15,5 +17,6 @@
         </li>
       <% }); %>
     </ul>
+    </div>   
 </body>
 </html>
