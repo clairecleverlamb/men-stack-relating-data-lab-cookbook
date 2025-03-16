@@ -21,7 +21,7 @@ router.get('/:userId', async (req, res) => {
         res.render('users/show.ejs', {user});
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        res.redirect('/users');
     }
 })
 
