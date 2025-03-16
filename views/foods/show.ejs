@@ -8,5 +8,8 @@
 <body>
     <%- include('../partials/_navbar') %>
     <h1><%= food.name %></h1>
+    <form action="/user/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete this item</button>
+    </form>
 </body>
 </html>
