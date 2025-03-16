@@ -6,6 +6,14 @@
     <title>Explore Our Community</title>
 </head>
 <body>
-    <h1>UserName</h1>
+    <%- include('../partials/_navbar.ejs') %> 
+    <h1>Explore Our Community</h1>
+    <ul>
+      <% users.forEach(user => { %>
+        <li>
+          <a href="/users/<%= user._id %>"><%= user.username %></a> 
+        </li>
+      <% }); %>
+    </ul>
 </body>
 </html>
